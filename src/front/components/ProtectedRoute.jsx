@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const ProtectedRoute = ({ children }) => {
-    const { actions, store } = useGlobalReducer();
+    const { actions } = useGlobalReducer();
     const [checking, setChecking] = useState(true);
     const [authorized, setAuthorized] = useState(false);
 
@@ -34,7 +34,7 @@ export const ProtectedRoute = ({ children }) => {
         };
     }, [actions]);
 
-    if (checking && !store.authChecked) {
+    if (checking) {
         return (
             <div className="container py-5">
                 <p>Validando sesión...</p>
